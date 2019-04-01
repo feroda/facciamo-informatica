@@ -9,8 +9,11 @@ int main(void) {
     int ne;
     int i;
     // 1. Richiesta di quanti pazienti sono presenti
-    printf("Quanti pazienti sono presenti? ");
-    scanf("%i", &ne);
+    do {
+        printf("Quanti pazienti sono presenti [da 1 a 10]? ");
+        scanf("%i", &ne);
+    } while (ne > 10);
+
     printf("Bene, %i pazienti presenti\n", ne);
 
     // 2. Richiesta nomi in input e inserimento nella sala_di_attesa
