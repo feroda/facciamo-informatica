@@ -3,11 +3,14 @@
 #include <string.h>
 
 int main(void) {
+
     // 0. Definizione di sala_di_attesa che contiene elementi di tipo char[]
     char paziente[20];
     char sala_di_attesa[10][20];
     int ne;
     int i;
+    char tasto;
+
     // 1. Richiesta di quanti pazienti sono presenti
     do {
         printf("Quanti pazienti sono presenti [da 1 a 10]? ");
@@ -23,11 +26,15 @@ int main(void) {
         strcpy(sala_di_attesa[i], paziente);
     }
 
-    // 3. Fare un ciclo su ogni elemento della sala di attesa:
-    //  3a. Stampare il nome contenuto
-    printf("I pazienti sono: ");
-    for (i = 0; i<ne; i++) {
-        printf("%s ", sala_di_attesa[i]);
+    // 3. Lettura del carattere premuto -> 
+    //      se è '*' => toglie il paziente che è arrivato per primo e aspetta 2 secondi
+    //      altrimenti non fa nulla.
+    i = 0;
+    while (i<ne) {
+        tasto = getchar();
+        if (tasto == '*') {
+            printf("Entra %s\n", sala_di_attesa[i]);
+            i++;
+        }
     }
-    printf("\n");
 }
