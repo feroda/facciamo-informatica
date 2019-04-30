@@ -9,7 +9,7 @@
  * - ordinare le persone per età
  * - ordinare le persone per nome completo
  */
-
+#include <stdio.h>
 
 typedef struct 
 {
@@ -24,7 +24,7 @@ int insert_person(SPerson *anagrafica[10]) {
     printf("Name: ");
     scanf("%s\n", &x.name);
     printf("Age: ");
-    scanf("%s\n", &x.age);
+    scanf("%i\n", &x.age);
 
     *anagrafica[0] = x;
 }
