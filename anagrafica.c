@@ -17,6 +17,18 @@ typedef struct
     int age;
 } SPerson;
 
+int insert_person(SPerson *anagrafica[10]) {
+
+    SPerson x;
+
+    printf("Name: ");
+    scanf("%s\n", &x.name);
+    printf("Age: ");
+    scanf("%s\n", &x.age);
+
+    *anagrafica[0] = x;
+}
+
 
 void main(void) {
     SPerson vet[10];
@@ -28,6 +40,8 @@ void main(void) {
      * Step 5: se tasto "A" => chiama la funzione sort_people_by_age()
      * Step 6: se tasto "N" => chiama la funzione sort_people_by_name()
      */
+    insert_person(&vet);
+
 
 }
 
