@@ -11,6 +11,8 @@
  */
 #include <stdio.h>
 
+#define DIM 10
+
 typedef struct 
 {
     char name[25];
@@ -35,7 +37,8 @@ int insert_person(SPerson anagrafica[]) {
 
 
 void main(void) {
-    SPerson vet[10];
+    SPerson vet[DIM];
+    int ne = 0;
 
     /* Step 1: visualizza messaggio iniziale di scelta
      * Step 2: differenzia (con uno switch) il carattere inserito
