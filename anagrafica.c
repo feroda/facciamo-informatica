@@ -26,6 +26,9 @@ int insert_person(SPerson anagrafica[]) {
     printf("Age: ");
     scanf("%i", &x.age);
 
+    // TODO: "0" deve essere "ne" che deve essere incrementato di 1
+    // TODO: prima di inserire l'elemento in "anagrafica" bisogna verificare che ne sia < di DIM
+
     anagrafica[0] = x;
     return 1;
 }
