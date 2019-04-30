@@ -19,7 +19,7 @@ typedef struct
     int age;
 } SPerson;
 
-int insert_person(SPerson anagrafica[]) {
+int insert_person(SPerson anagrafica[], int *ne) {
 
     SPerson x;
 
@@ -28,10 +28,10 @@ int insert_person(SPerson anagrafica[]) {
     printf("Age: ");
     scanf("%i", &x.age);
 
-    // TODO: "0" deve essere "ne" che deve essere incrementato di 1
     // TODO: prima di inserire l'elemento in "anagrafica" bisogna verificare che ne sia < di DIM
 
-    anagrafica[0] = x;
+    anagrafica[*ne] = x;
+    (*ne)++;
     return 1;
 }
 
@@ -47,9 +47,7 @@ void main(void) {
      * Step 5: se tasto "A" => chiama la funzione sort_people_by_age()
      * Step 6: se tasto "N" => chiama la funzione sort_people_by_name()
      */
-    insert_person(vet);
-
-
+    insert_person(vet, &ne);
 }
 
 
