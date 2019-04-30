@@ -1,3 +1,4 @@
+/* Implementazione di un ambulatorio */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
