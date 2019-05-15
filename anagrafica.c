@@ -22,6 +22,7 @@ typedef struct {
 int insert_person(SPerson anagrafica[], int *ne);
 int delete_person(SPerson anagrafica[], int *ne, int pos);
 int print_people(SPerson anagrafica[], int ne);
+int print_people_underage(SPerson anagrafica[], int ne, int agemax);
 
 void main(void) {
     SPerson vet[DIM];
@@ -36,10 +37,13 @@ void main(void) {
      * Step 5: se tasto "A" => chiama la funzione sort_people_by_age()
      * Step 6: se tasto "N" => chiama la funzione sort_people_by_name()
      */
-    insert_person(vet, &ne);
+    for (i=0; i<3; i++) {
+        insert_person(vet, &ne);
+    }
     print_people(vet, ne);
-    delete_person(vet, &ne, 0);
-    print_people(vet, ne);
+    // delete_person(vet, &ne, 0);
+    // print_people(vet, ne);
+    print_people_underage(vet, ne, 15);
 }
 
 int print_people(SPerson anagrafica[], int ne) {
@@ -57,6 +61,22 @@ int print_people(SPerson anagrafica[], int ne) {
     return 1;
 }
 
+int print_people_underage(SPerson anagrafica[], int ne, int agemax) {
+    int i;
+    SPerson x;
+    int c = 0;
+
+    for (i=0; i<ne; i++) {
+        x = anagrafica[i];
+        if (x.age <= agemax) {
+            printf("Persona: %s %d\n", x.name, x.age);
+            c++;
+        }
+    }
+    if (!c) {
+        printf("Non ci sono persone più giovani di %i anni in lista\n", agemax);
+    }
+}
 
 int insert_person(SPerson anagrafica[], int *ne) {
 
