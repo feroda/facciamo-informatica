@@ -11,6 +11,7 @@
  * - ordinare le persone per nome completo
  */
 #include <stdio.h>
+#include <string.h>
 
 #define DIM 10
 
@@ -23,12 +24,14 @@ int insert_person(SPerson anagrafica[], int *ne);
 int delete_person(SPerson anagrafica[], int *ne, int pos);
 int print_people(SPerson anagrafica[], int ne);
 int print_people_underage(SPerson anagrafica[], int ne, int agemax);
+int save_people(FILE *fp, SPerson anagrafica[], int ne);
 
 void main(void) {
     SPerson vet[DIM];
     int ne = 0;
     int i = 0;
     SPerson x;
+    FILE *f;
 
     /* Step 1: visualizza messaggio iniziale di scelta
      * Step 2: differenzia (con uno switch) il carattere inserito
@@ -44,6 +47,28 @@ void main(void) {
     // delete_person(vet, &ne, 0);
     // print_people(vet, ne);
     print_people_underage(vet, ne, 15);
+
+    f = fopen("nomefile.txt", "w");
+    save_people(f, vet, ne);
+    fclose(f);
+}
+
+int save_people(FILE *fp, SPerson anagrafica[], int ne) {
+    int i;
+    SPerson x;
+    char msg[100];
+
+    if (!ne) {
+        strcpy(msg, "Non ci sono persone in lista\n"); 
+        fwrite(msg, strlen(msg), 1, fp);
+    }
+    for (i=0; i<ne; i++) {
+        x = anagrafica[i];
+        sprintf(msg, "Persona: %s %d\n", x.name, x.age);
+        fwrite(msg, strlen(msg), 1, fp);
+    }
+
+    return 1;
 }
 
 int print_people(SPerson anagrafica[], int ne) {
