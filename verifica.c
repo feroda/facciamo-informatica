@@ -10,7 +10,7 @@
 
 typedef struct{
 
-    char materia;
+    char materia[20];
     char tipo;
     float voto;
 
@@ -21,24 +21,27 @@ int AggiungiVoto(SVoto tab[],SVoto x,int* ne);
 int Visualizza(SVoto tab[], int* ne);
 int VisualizzaIns(SVoto tab[], int* ne);
 int Salva(SVoto tab[], FILE* f, int ne);
+int EliminaVoto(SVoto tab[],int* ne,int pos);
 
 
 int main(void)
 {
-        char ch;
+        char ch = 'a';
         SVoto x;
         SVoto tab[DIM];
     
-        int ne;
-        int pos;
+        int ne = 0;
+        int pos = 0;
         FILE* f;
 
-        MostraMenu();
-        ch =getc;
-        switch(ch)
-        {
-            do{
-
+        do {
+            if (ch != '\n')
+                MostraMenu();
+            ch = getc(stdin);
+            
+            switch(ch)
+            {
+            
                 case '1' :
                     system("cls");
                     printf("Qual'e' la materia?\n");
@@ -68,16 +71,9 @@ int main(void)
 
                  case '4' :
                     VisualizzaIns(tab,&ne);
-                    break;
-
-             }while(ch != '*');
-            
-              
-    
+                    break;       
            }
-
-
-
+        } while (ch != '*');
 
 }
 
@@ -112,7 +108,7 @@ int Visualizza(SVoto tab[], int* ne)
 
     for(i=0;i<*ne;i++)
 
-        printf("Materia: %s   , Tipo: %c,     Voto: %f", tab[i].materia,tab[i].tipo, tab[i].voto );
+        printf("Materia: %s   , Tipo: %c,     Voto: %f\n", tab[i].materia,tab[i].tipo, tab[i].voto );
 
 }
 
@@ -137,8 +133,8 @@ int VisualizzaIns(SVoto tab[], int* ne)
     int i;
     for(i=0;i<*ne;i++)
     {
-        if(tab[i].voto < '6')
-            printf("Materia: %s   , Tipo: %c,     Voto: %f", tab[i].materia,tab[i].tipo, tab[i].voto );
+        if(tab[i].voto < 6)
+            printf("Materia: %s   , Tipo: %c,     Voto: %f\n", tab[i].materia,tab[i].tipo, tab[i].voto );
     }
 }
 
